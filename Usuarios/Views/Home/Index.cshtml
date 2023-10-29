@@ -1,8 +1,73 @@
-﻿@{
+﻿@model List<User>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<div class="card">
+    <div class="card-header">
+        Listado De Usuarios
+    </div>
+    <div class="card-body">
+        <a class="btn btn-dark btn-lg">Nuevo Usuario</a>
+        <hr />
+
+        <table class="table table-responsive table-striped" id="tabla">
+            <thead>
+                <tr>
+                    <th colspan="5">
+                        <input id="buscar" type="text" class="form-control" placeholder="Escriba un nombre para filtrar la lista" />
+                    </th>
+                </tr>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@item.Id</th>
+                        <td scope="row" id="nombre">@item.UserName</td>
+                        <td scope="row">@item.Email</td>
+                        <td scope="row">@item.Address.City</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm">Editar</a>
+                            <a class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    //Acceder al input para buscar
+    let busqueda = document.getElementById('buscar');
+    
+    //acceder a la tabla
+    let table = document.getElementById("tabla").tBodies[0];
+
+    //Esta funcion se encarga de mostrar o eliminar las filas cuyo campo nombre tenga coincidencia con el conptenido del input
+    buscaTabla = function () {
+        texto = busqueda.value.toLowerCase();
+        let r = 0;
+
+        while (row = table.rows[r++]) {
+            if (row.children[1].innerText.toLowerCase().indexOf(texto) !== -1)
+                row.style.display = null;
+            else
+                row.style.display = 'none';
+        }
+    }
+
+    busqueda.addEventListener('keyup', buscaTabla);
+</script>

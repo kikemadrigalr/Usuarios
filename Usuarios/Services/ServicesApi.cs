@@ -32,8 +32,8 @@ namespace Usuarios.Services
             if (response.IsSuccessStatusCode)
             {
                 var json_response = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<ResultadoApi>(json_response);
-                lista = result.lista;
+                var result = JsonConvert.DeserializeObject<List<User>>(json_response);
+                lista = result;
             }
 
             return lista;

@@ -1,7 +1,12 @@
+using Usuarios.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//inyectar la dependecia del servicio para que sea accesible desde cualquier controlador
+builder.Services.AddScoped<IServicesAPi, ServicesApi>();
 
 var app = builder.Build();
 
