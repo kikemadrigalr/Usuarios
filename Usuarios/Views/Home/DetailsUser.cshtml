@@ -1,0 +1,29 @@
+﻿@model List<User>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Detalles de Usuarios</h1>
+</div>
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        @foreach(var item in Model)
+        {
+            <div class="col">
+                <div class="card">
+                    <div class="card-header"><strong>@item.Name</strong></div>
+                    <div class="card-body">
+                        <h5>Username: @item.UserName</h5>
+                        <p>Email: @item.Email</p>
+                        <p>Ciudad: @item.Address.City</p>
+                        <p>Calle: @item.Address.Street</p>
+                        <p>Latitud: @item.Address.Geo.Lat</p>
+                        <p>Longitud: @item.Address.Geo.Lng</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

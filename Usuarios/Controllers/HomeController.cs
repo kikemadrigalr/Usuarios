@@ -19,7 +19,15 @@ namespace Usuarios.Controllers
         public async Task<IActionResult> Index()
         {
             List<User> users = new List<User>();
-            users = await _services.GetAll();
+            //users = await _services.GetAll();
+            users = await GetUsers();
+            return View(users);
+        }
+
+        public async Task<IActionResult> DetailsUser()
+        {
+            List<User> users = new List<User>();
+            users = await GetUsers();
             return View(users);
         }
 
@@ -32,6 +40,13 @@ namespace Usuarios.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public async Task<List<User>> GetUsers() 
+        {
+            List<User> users = new List<User>();
+            users = await _services.GetAll();
+            return users;
         }
     }
 }

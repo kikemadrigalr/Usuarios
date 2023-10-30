@@ -4,7 +4,7 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">Listado de Usuarios</h1>
 </div>
 
 <div class="card">
@@ -12,7 +12,7 @@
         Listado De Usuarios
     </div>
     <div class="card-body">
-        <a class="btn btn-dark btn-lg">Nuevo Usuario</a>
+        <a asp-action="DetailsUser" asp-controller="Home" class="btn btn-dark btn-lg">Mostrar Detalles</a>
         <hr />
 
         <table class="table table-responsive table-striped" id="tabla">
@@ -24,6 +24,7 @@
                 </tr>
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
                     <th scope="col">Username</th>
                     <th scope="col">Email</th>
                     <th scope="col">Direccion</th>
@@ -35,7 +36,8 @@
                 {
                     <tr>
                         <th scope="row">@item.Id</th>
-                        <td scope="row" id="nombre">@item.UserName</td>
+                        <td scope="row" id="nombre">@item.Name</td>
+                        <td scope="row">@item.UserName</td>
                         <td scope="row">@item.Email</td>
                         <td scope="row">@item.Address.City</td>
                         <td>
@@ -69,5 +71,6 @@
         }
     }
 
+    //Ejecutar la funcion buscarTabla con el evento de pulsar y soltar una tecla del tecldo
     busqueda.addEventListener('keyup', buscaTabla);
 </script>

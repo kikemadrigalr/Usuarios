@@ -38,25 +38,5 @@ namespace Usuarios.Services
 
             return lista;
         }
-
-        public Task<bool> Create(User user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<User> GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> Update(User user)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
