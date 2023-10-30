@@ -28,7 +28,7 @@ namespace Usuarios.Services
             client.BaseAddress = new Uri(_baseUrl);
             var response = await client.GetAsync("/users");
 
-            //ejecucion correcta
+            //Peticion correcta
             if (response.IsSuccessStatusCode)
             {
                 var json_response = await response.Content.ReadAsStringAsync();

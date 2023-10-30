@@ -19,7 +19,6 @@ namespace Usuarios.Controllers
         public async Task<IActionResult> Index()
         {
             List<User> users = new List<User>();
-            //users = await _services.GetAll();
             users = await GetUsers();
             return View(users);
         }
@@ -42,6 +41,7 @@ namespace Usuarios.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        //Funcion para cargar el listado de los usuarios y enviarlos a la vista
         public async Task<List<User>> GetUsers() 
         {
             List<User> users = new List<User>();
